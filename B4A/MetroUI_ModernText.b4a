@@ -27,7 +27,7 @@ Version=11
 
 #Region  Activity Attributes 
 	#FullScreen: False
-	#IncludeTitle: True
+	#IncludeTitle: False
 #End Region
 
 '#BridgeLogger: True

@@ -38,17 +38,35 @@ Public Sub DesignerCreateView (Base As Object, Lbl As Label, Props As Map)
 	mBase.Tag = Me
 	img.Gravity=Gravity.FILL
 	
-	mBase.AddView(img,0,0,mBase.Width,mBase.Height)
+	Dim PanelArkaPlanOzellikleri As ColorDrawable
+	PanelArkaPlanOzellikleri.Initialize2(Colors.White,70,0,Colors.White)
+	MyPanel.Background=PanelArkaPlanOzellikleri
+	
+	mBase.AddView(MyPanel,0,0,mBase.Width,51.5dip)
+	MyPanel.AddView(MyTextbox,55dip,0,mBase.Width-70dip,MyPanel.Height)
+	MyPanel.AddView(img,-7.8dip,0,MyTextbox.Left+10dip,mBase.Height)
+	
+	MyTextbox.Color=Colors.Transparent
 	
 	Dim c As Canvas
 
 	Dim b As Bitmap
 
 	Dim svg As ioxSVG
-	b.InitializeMutable(img.Width,img.Height)
+	
+	If img.Height<500 Then
+		
+		b.InitializeMutable(img.Width,img.Height * 0.89843)
+		
+	Else
+			
+		b.InitializeMutable(img.Width,img.Height - 850)
+	End If
+	
+	
 
 	c.Initialize2(b)
-	Color="#000000"
+	Color="#067dc1"
 	
 	svg.Initialize2($"<?xml version="1.0" encoding="UTF-8" ?>
 	<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
@@ -59,20 +77,20 @@ Public Sub DesignerCreateView (Base As Object, Lbl As Label, Props As Map)
 	</svg>
 	"$)
 	
-	
-	
-	Log(svg.DocumentWidth)
-	Log(c.Bitmap.Width)
-	Log(b.Width)
-	
-	
-	
-	
-	
 	svg.DocumentWidth = img.Width
-	svg.DocumentHeight = img.Height
+	If img.Height<500 Then
+		
+		svg.DocumentHeight = img.Height * 0.89843
+		
+		Else
+			
+		svg.DocumentHeight = img.Height - 850
+	End If
+	
 	svg.RenderToCanvas(c)
 	img.Bitmap=b
+	
+	Log(img.Height)
 	
 	
 End Sub
