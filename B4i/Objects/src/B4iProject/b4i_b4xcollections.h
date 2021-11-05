@@ -1,7 +1,6 @@
 #import "iCore.h"
 #import "iSVG.h"
 #import "iXUI.h"
-#import "iDebug2.h"
 @class b4i_main;
 @class b4i_b4xpages;
 @class b4i_b4xmainpage;

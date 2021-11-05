@@ -16,76 +16,46 @@
 
 
 + (B4I*)createBI {
-    return [B4IShellBI alloc];
+    return [B4I alloc];
 }
 
 - (void)dealloc {
     if (self.bi != nil)
         NSLog(@"Class (b4i_b4xpagesdelegator) instance released.");
 }
-
-- (NSString*)  _activity_pause:(b4i_b4xpagesdelegator*) __ref{
-__ref = self;
-B4IRDebugUtils.currentModule=@"b4xpagesdelegator";
-B4IRDebugUtils.currentLine=6094848;
- //BA.debugLineNum = 6094848;BA.debugLine="Public Sub Activity_Pause";
-B4IRDebugUtils.currentLine=6094849;
- //BA.debugLineNum = 6094849;BA.debugLine="B4XPages.GetManager.Activity_Pause";
-[[self->__b4xpages _getmanager /*b4i_b4xpagesmanager**/ ] _activity_pause /*NSString**/ :nil];
-B4IRDebugUtils.currentLine=6094850;
- //BA.debugLineNum = 6094850;BA.debugLine="End Sub";
+- (NSString*)  _activity_pause{
+ //BA.debugLineNum = 52;BA.debugLine="Public Sub Activity_Pause";
+ //BA.debugLineNum = 53;BA.debugLine="B4XPages.GetManager.Activity_Pause";
+[[self->__b4xpages _getmanager /*b4i_b4xpagesmanager**/ ] _activity_pause /*NSString**/ ];
+ //BA.debugLineNum = 54;BA.debugLine="End Sub";
 return @"";
 }
-- (NSString*)  _activity_resume:(b4i_b4xpagesdelegator*) __ref{
-__ref = self;
-B4IRDebugUtils.currentModule=@"b4xpagesdelegator";
-if ([B4IDebug shouldDelegate: @"activity_resume"])
-	 {return ((NSString*) [B4IDebug delegate:self.bi :@"activity_resume" :nil]);}
-B4IRDebugUtils.currentLine=6029312;
- //BA.debugLineNum = 6029312;BA.debugLine="Public Sub Activity_Resume";
-B4IRDebugUtils.currentLine=6029313;
- //BA.debugLineNum = 6029313;BA.debugLine="B4XPages.GetManager.Activity_Resume";
-[[self->__b4xpages _getmanager /*b4i_b4xpagesmanager**/ ] _activity_resume /*NSString**/ :nil];
-B4IRDebugUtils.currentLine=6029314;
- //BA.debugLineNum = 6029314;BA.debugLine="End Sub";
+- (NSString*)  _activity_resume{
+ //BA.debugLineNum = 48;BA.debugLine="Public Sub Activity_Resume";
+ //BA.debugLineNum = 49;BA.debugLine="B4XPages.GetManager.Activity_Resume";
+[[self->__b4xpages _getmanager /*b4i_b4xpagesmanager**/ ] _activity_resume /*NSString**/ ];
+ //BA.debugLineNum = 50;BA.debugLine="End Sub";
 return @"";
 }
-- (NSString*)  _initialize:(b4i_b4xpagesdelegator*) __ref :(B4I*) _ba{
-__ref = self;
-[self initializeClassModule];
-B4IRDebugUtils.currentModule=@"b4xpagesdelegator";
-if ([B4IDebug shouldDelegate: @"initialize"])
-	 {return ((NSString*) [B4IDebug delegate:self.bi :@"initialize:" :@[[B4I nilToNSNull:_ba]]]);}
-B4IRDebugUtils.currentLine=5898240;
- //BA.debugLineNum = 5898240;BA.debugLine="Public Sub Initialize";
-B4IRDebugUtils.currentLine=5898242;
- //BA.debugLineNum = 5898242;BA.debugLine="End Sub";
-return @"";
-}
-- (NSString*)  _class_globals:(b4i_b4xpagesdelegator*) __ref{
-__ref = self;
+- (NSString*)  _class_globals{
 self->__main=[b4i_main new];
 self->__b4xpages=[b4i_b4xpages new];
 self->__b4xcollections=[b4i_b4xcollections new];
-B4IRDebugUtils.currentModule=@"b4xpagesdelegator";
-B4IRDebugUtils.currentLine=5832704;
- //BA.debugLineNum = 5832704;BA.debugLine="Sub Class_Globals";
-B4IRDebugUtils.currentLine=5832705;
- //BA.debugLineNum = 5832705;BA.debugLine="End Sub";
+ //BA.debugLineNum = 1;BA.debugLine="Sub Class_Globals";
+ //BA.debugLineNum = 2;BA.debugLine="End Sub";
 return @"";
 }
-- (NSString*)  _mainform_resize:(b4i_b4xpagesdelegator*) __ref :(double) _width :(double) _height{
-__ref = self;
-B4IRDebugUtils.currentModule=@"b4xpagesdelegator";
-if ([B4IDebug shouldDelegate: @"mainform_resize"])
-	 {return ((NSString*) [B4IDebug delegate:self.bi :@"mainform_resize::" :@[@(_width),@(_height)]]);}
-B4IRDebugUtils.currentLine=5963776;
- //BA.debugLineNum = 5963776;BA.debugLine="Public Sub MainForm_Resize(Width As Double, Height";
-B4IRDebugUtils.currentLine=5963777;
- //BA.debugLineNum = 5963777;BA.debugLine="B4XPages.GetManager.MainForm_Resize(Width, Height";
-[[self->__b4xpages _getmanager /*b4i_b4xpagesmanager**/ ] _mainform_resize /*NSString**/ :nil :_width :_height];
-B4IRDebugUtils.currentLine=5963778;
- //BA.debugLineNum = 5963778;BA.debugLine="End Sub";
+- (NSString*)  _initialize:(B4I*) _ba{
+[self initializeClassModule];
+ //BA.debugLineNum = 4;BA.debugLine="Public Sub Initialize";
+ //BA.debugLineNum = 6;BA.debugLine="End Sub";
+return @"";
+}
+- (NSString*)  _mainform_resize:(double) _width :(double) _height{
+ //BA.debugLineNum = 44;BA.debugLine="Public Sub MainForm_Resize(Width As Double, Height";
+ //BA.debugLineNum = 45;BA.debugLine="B4XPages.GetManager.MainForm_Resize(Width, Height";
+[[self->__b4xpages _getmanager /*b4i_b4xpagesmanager**/ ] _mainform_resize /*NSString**/ :_width :_height];
+ //BA.debugLineNum = 46;BA.debugLine="End Sub";
 return @"";
 }
 @end

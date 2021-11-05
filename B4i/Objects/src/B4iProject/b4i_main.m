@@ -19,60 +19,37 @@
     static b4i_main* shared = nil;
     if (shared == nil) {
         shared = [self alloc];
-        shared.bi = [[B4IShellBI alloc] init:shared];
+        shared.bi = [[B4I alloc] init:shared];
         shared.__c = [B4ICommon new];
     }
     return shared;
 }
-- (int)debugAppId {
-    return 32;
-}
-
 
 - (NSString*)  _application_background{
-B4IRDebugUtils.currentModule=@"main";
-if ([B4IDebug shouldDelegate: @"application_background"])
-	 {return ((NSString*) [B4IDebug delegate:self.bi :@"application_background" :nil]);}
-B4IRDebugUtils.currentLine=131072;
- //BA.debugLineNum = 131072;BA.debugLine="Private Sub Application_Background";
-B4IRDebugUtils.currentLine=131073;
- //BA.debugLineNum = 131073;BA.debugLine="B4XPages.Delegate.Activity_Pause";
-[self->__b4xpages->__delegate /*b4i_b4xpagesdelegator**/  _activity_pause /*NSString**/ :nil];
-B4IRDebugUtils.currentLine=131074;
- //BA.debugLineNum = 131074;BA.debugLine="End Sub";
+ //BA.debugLineNum = 30;BA.debugLine="Private Sub Application_Background";
+ //BA.debugLineNum = 31;BA.debugLine="B4XPages.Delegate.Activity_Pause";
+[self->__b4xpages->__delegate /*b4i_b4xpagesdelegator**/  _activity_pause /*NSString**/ ];
+ //BA.debugLineNum = 32;BA.debugLine="End Sub";
 return @"";
 }
 - (NSString*)  _application_foreground{
-B4IRDebugUtils.currentModule=@"main";
-if ([B4IDebug shouldDelegate: @"application_foreground"])
-	 {return ((NSString*) [B4IDebug delegate:self.bi :@"application_foreground" :nil]);}
-B4IRDebugUtils.currentLine=196608;
- //BA.debugLineNum = 196608;BA.debugLine="Private Sub Application_Foreground";
-B4IRDebugUtils.currentLine=196609;
- //BA.debugLineNum = 196609;BA.debugLine="B4XPages.Delegate.Activity_Resume";
-[self->__b4xpages->__delegate /*b4i_b4xpagesdelegator**/  _activity_resume /*NSString**/ :nil];
-B4IRDebugUtils.currentLine=196610;
- //BA.debugLineNum = 196610;BA.debugLine="End Sub";
+ //BA.debugLineNum = 34;BA.debugLine="Private Sub Application_Foreground";
+ //BA.debugLineNum = 35;BA.debugLine="B4XPages.Delegate.Activity_Resume";
+[self->__b4xpages->__delegate /*b4i_b4xpagesdelegator**/  _activity_resume /*NSString**/ ];
+ //BA.debugLineNum = 36;BA.debugLine="End Sub";
 return @"";
 }
 - (NSString*)  _application_start:(B4INavigationControllerWrapper*) _nav{
-B4IRDebugUtils.currentModule=@"main";
-if ([B4IDebug shouldDelegate: @"application_start"])
-	 {return ((NSString*) [B4IDebug delegate:self.bi :@"application_start:" :@[[B4I nilToNSNull:_nav]]]);}
+[self initializeStaticModules];
 b4i_b4xpagesmanager* _pagesmanager = nil;
-B4IRDebugUtils.currentLine=65536;
- //BA.debugLineNum = 65536;BA.debugLine="Private Sub Application_Start (Nav As NavigationCo";
-B4IRDebugUtils.currentLine=65537;
- //BA.debugLineNum = 65537;BA.debugLine="NavControl = Nav";
+ //BA.debugLineNum = 22;BA.debugLine="Private Sub Application_Start (Nav As NavigationCo";
+ //BA.debugLineNum = 23;BA.debugLine="NavControl = Nav";
 self->__navcontrol = _nav;
-B4IRDebugUtils.currentLine=65538;
- //BA.debugLineNum = 65538;BA.debugLine="Dim PagesManager As B4XPagesManager";
+ //BA.debugLineNum = 24;BA.debugLine="Dim PagesManager As B4XPagesManager";
 _pagesmanager = [b4i_b4xpagesmanager new];
-B4IRDebugUtils.currentLine=65539;
- //BA.debugLineNum = 65539;BA.debugLine="PagesManager.Initialize(NavControl)";
-[_pagesmanager _initialize /*NSString**/ :nil :self.bi :self->__navcontrol];
-B4IRDebugUtils.currentLine=65540;
- //BA.debugLineNum = 65540;BA.debugLine="End Sub";
+ //BA.debugLineNum = 25;BA.debugLine="PagesManager.Initialize(NavControl)";
+[_pagesmanager _initialize /*NSString**/ :self.bi :self->__navcontrol];
+ //BA.debugLineNum = 26;BA.debugLine="End Sub";
 return @"";
 }
 
@@ -85,19 +62,12 @@ return @"";
 - (NSString*)  _process_globals{
 self->__b4xpages=[b4i_b4xpages new];
 self->__b4xcollections=[b4i_b4xcollections new];
-B4IRDebugUtils.currentModule=@"main";
-if ([B4IDebug shouldDelegate: @"process_globals"])
-	 {return ((NSString*) [B4IDebug delegate:self.bi :@"process_globals" :nil]);}
-B4IRDebugUtils.currentLine=0;
- //BA.debugLineNum = 0;BA.debugLine="Sub Process_Globals";
-B4IRDebugUtils.currentLine=1;
- //BA.debugLineNum = 1;BA.debugLine="Public App As Application";
+ //BA.debugLineNum = 16;BA.debugLine="Sub Process_Globals";
+ //BA.debugLineNum = 17;BA.debugLine="Public App As Application";
 self->__app = [B4IApplicationWrapper new];
-B4IRDebugUtils.currentLine=2;
- //BA.debugLineNum = 2;BA.debugLine="Public NavControl As NavigationController";
+ //BA.debugLineNum = 18;BA.debugLine="Public NavControl As NavigationController";
 self->__navcontrol = [B4INavigationControllerWrapper new];
-B4IRDebugUtils.currentLine=4;
- //BA.debugLineNum = 4;BA.debugLine="End Sub";
+ //BA.debugLineNum = 20;BA.debugLine="End Sub";
 return @"";
 }
 @end

@@ -20,7 +20,7 @@ Version=7.8
 @EndOfDesignText@
 'Code module
 #Region  Project Attributes 
-	#ApplicationLabel: B4i Example
+	#ApplicationLabel: ModernTextUI
 	#Version: 1.0.0 
 	'Orientation possible values: Portrait, LandscapeLeft, LandscapeRight and PortraitUpsideDown
 	#iPhoneOrientations: Portrait, LandscapeLeft, LandscapeRight

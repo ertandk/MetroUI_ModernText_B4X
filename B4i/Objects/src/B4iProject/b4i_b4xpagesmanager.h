@@ -1,7 +1,6 @@
 #import "iCore.h"
 #import "iSVG.h"
 #import "iXUI.h"
-#import "iDebug2.h"
 @class b4i_main;
 @class b4i_b4xpages;
 @class b4i_b4xcollections;
@@ -30,17 +29,17 @@
 @public b4i_b4xpages* __b4xpages;
 @public b4i_b4xcollections* __b4xcollections;
 
-}- (NSString*)  _activity_pause:(b4i_b4xpagesmanager*) __ref;
-- (NSString*)  _activity_resume:(b4i_b4xpagesmanager*) __ref;
-- (NSString*)  _addpage:(b4i_b4xpagesmanager*) __ref :(NSString*) _id :(NSObject*) _b4xpage;
-- (NSString*)  _addpageandcreate:(b4i_b4xpagesmanager*) __ref :(NSString*) _id :(NSObject*) _b4xpage;
-- (NSString*)  _b4ipage_appear:(b4i_b4xpagesmanager*) __ref;
-- (NSString*)  _b4ipage_barbuttonclick:(b4i_b4xpagesmanager*) __ref :(NSString*) _tag;
-- (NSString*)  _b4ipage_disappear:(b4i_b4xpagesmanager*) __ref;
-- (NSString*)  _b4ipage_keyboardstatechanged:(b4i_b4xpagesmanager*) __ref :(float) _height;
-- (NSString*)  _b4ipage_resize:(b4i_b4xpagesmanager*) __ref :(float) _width :(float) _height;
-- (NSString*)  _backgroundstatechanged:(b4i_b4xpagesmanager*) __ref :(BOOL) _newstate;
-- (NSString*)  _class_globals:(b4i_b4xpagesmanager*) __ref;
+}- (NSString*)  _activity_pause;
+- (NSString*)  _activity_resume;
+- (NSString*)  _addpage:(NSString*) _id :(NSObject*) _b4xpage;
+- (NSString*)  _addpageandcreate:(NSString*) _id :(NSObject*) _b4xpage;
+- (NSString*)  _b4ipage_appear;
+- (NSString*)  _b4ipage_barbuttonclick:(NSString*) _tag;
+- (NSString*)  _b4ipage_disappear;
+- (NSString*)  _b4ipage_keyboardstatechanged:(float) _height;
+- (NSString*)  _b4ipage_resize:(float) _width :(float) _height;
+- (NSString*)  _backgroundstatechanged:(BOOL) _newstate;
+- (NSString*)  _class_globals;
 @property (nonatomic)b4i_b4xorderedmap* _idtob4xpage;
 @property (nonatomic)b4i_b4xorderedmap* _rootb4xtopage;
 @property (nonatomic)b4i_b4xset* _mstackofpageids;
@@ -54,29 +53,29 @@
 @property (nonatomic)b4i_main* _main;
 @property (nonatomic)b4i_b4xpages* _b4xpages;
 @property (nonatomic)b4i_b4xcollections* _b4xcollections;
-- (NSString*)  _closepage:(b4i_b4xpagesmanager*) __ref :(NSObject*) _b4xpage;
-- (NSString*)  _closepageimpl:(b4i_b4xpagesmanager*) __ref :(_b4xpageinfo*) _pi;
-- (_b4xpageinfo*)  _createb4xpageinfo:(b4i_b4xpagesmanager*) __ref :(NSObject*) _b4xpage :(NSString*) _id :(BOOL) _created :(NSObject*) _title;
-- (_b4xpageparent*)  _createb4xpageparent:(b4i_b4xpagesmanager*) __ref :(B4IPage*) _nativetype;
-- (NSString*)  _createpageifneeded:(b4i_b4xpagesmanager*) __ref :(_b4xpageinfo*) _pi;
-- (NSString*)  _createpageimpl:(b4i_b4xpagesmanager*) __ref :(_b4xpageinfo*) _pi;
-- (_b4xpageinfo*)  _findpifromb4xpage:(b4i_b4xpagesmanager*) __ref :(NSObject*) _page;
-- (NSObject*)  _getpage:(b4i_b4xpagesmanager*) __ref :(NSString*) _id;
-- (_b4xpageinfo*)  _getpagefromid:(b4i_b4xpagesmanager*) __ref :(NSString*) _id;
-- (_b4xpageinfo*)  _getpageinfofromroot:(b4i_b4xpagesmanager*) __ref :(B4XViewWrapper*) _root;
-- (_b4xpageinfo*)  _gettoppage:(b4i_b4xpagesmanager*) __ref;
-- (NSString*)  _initialize:(b4i_b4xpagesmanager*) __ref :(B4I*) _ba :(B4INavigationControllerWrapper*) _navcontrol;
-- (NSString*)  _logevent:(b4i_b4xpagesmanager*) __ref :(_b4xpageinfo*) _pi :(NSString*) _ev;
-- (NSString*)  _mainform_resize:(b4i_b4xpagesmanager*) __ref :(double) _width :(double) _height;
-- (NSString*)  _raiseevent:(b4i_b4xpagesmanager*) __ref :(_b4xpageinfo*) _targetpage :(NSString*) _subname :(B4IArray*) _params;
-- (NSObject*)  _raiseeventwithresult:(b4i_b4xpagesmanager*) __ref :(_b4xpageinfo*) _targetpage :(NSString*) _subname :(B4IArray*) _params;
-- (NSString*)  _settitle:(b4i_b4xpagesmanager*) __ref :(NSObject*) _b4xpage :(NSObject*) _title;
-- (NSString*)  _showpage:(b4i_b4xpagesmanager*) __ref :(NSString*) _id;
-- (NSString*)  _showpageandremovepreviouspages:(b4i_b4xpagesmanager*) __ref :(NSString*) _id;
-- (NSString*)  _showpageimpl:(b4i_b4xpagesmanager*) __ref :(_b4xpageinfo*) _pi;
-- (NSString*)  _toppageappear:(b4i_b4xpagesmanager*) __ref;
-- (NSString*)  _toppagedisappear:(b4i_b4xpagesmanager*) __ref;
-- (NSString*)  _updatestackstring:(b4i_b4xpagesmanager*) __ref;
+- (NSString*)  _closepage:(NSObject*) _b4xpage;
+- (NSString*)  _closepageimpl:(_b4xpageinfo*) _pi;
+- (_b4xpageinfo*)  _createb4xpageinfo:(NSObject*) _b4xpage :(NSString*) _id :(BOOL) _created :(NSObject*) _title;
+- (_b4xpageparent*)  _createb4xpageparent:(B4IPage*) _nativetype;
+- (NSString*)  _createpageifneeded:(_b4xpageinfo*) _pi;
+- (NSString*)  _createpageimpl:(_b4xpageinfo*) _pi;
+- (_b4xpageinfo*)  _findpifromb4xpage:(NSObject*) _page;
+- (NSObject*)  _getpage:(NSString*) _id;
+- (_b4xpageinfo*)  _getpagefromid:(NSString*) _id;
+- (_b4xpageinfo*)  _getpageinfofromroot:(B4XViewWrapper*) _root;
+- (_b4xpageinfo*)  _gettoppage;
+- (NSString*)  _initialize:(B4I*) _ba :(B4INavigationControllerWrapper*) _navcontrol;
+- (NSString*)  _logevent:(_b4xpageinfo*) _pi :(NSString*) _ev;
+- (NSString*)  _mainform_resize:(double) _width :(double) _height;
+- (NSString*)  _raiseevent:(_b4xpageinfo*) _targetpage :(NSString*) _subname :(B4IArray*) _params;
+- (NSObject*)  _raiseeventwithresult:(_b4xpageinfo*) _targetpage :(NSString*) _subname :(B4IArray*) _params;
+- (NSString*)  _settitle:(NSObject*) _b4xpage :(NSObject*) _title;
+- (NSString*)  _showpage:(NSString*) _id;
+- (NSString*)  _showpageandremovepreviouspages:(NSString*) _id;
+- (NSString*)  _showpageimpl:(_b4xpageinfo*) _pi;
+- (NSString*)  _toppageappear;
+- (NSString*)  _toppagedisappear;
+- (NSString*)  _updatestackstring;
 @end
 @interface _b4xpageparent:NSObject
 {

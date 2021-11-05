@@ -1,7 +1,6 @@
 #import "iCore.h"
 #import "iSVG.h"
 #import "iXUI.h"
-#import "iDebug2.h"
 @class b4i_main;
 @class b4i_b4xpages;
 @class b4i_b4xcollections;
@@ -44,8 +43,8 @@
 @public b4i_b4xpages* __b4xpages;
 @public b4i_b4xcollections* __b4xcollections;
 
-}- (NSString*)  _base_resize:(b4i_metroui_moderntext*) __ref :(double) _width :(double) _height;
-- (NSString*)  _class_globals:(b4i_metroui_moderntext*) __ref;
+}- (NSString*)  _base_resize:(double) _width :(double) _height;
+- (NSString*)  _class_globals;
 @property (nonatomic)NSString* _meventname;
 @property (nonatomic)NSObject* _mcallback;
 @property (nonatomic)B4XViewWrapper* _mbase;
@@ -73,19 +72,19 @@
 @property (nonatomic)b4i_main* _main;
 @property (nonatomic)b4i_b4xpages* _b4xpages;
 @property (nonatomic)b4i_b4xcollections* _b4xcollections;
-- (NSString*)  _clearerror:(b4i_metroui_moderntext*) __ref;
-- (NSString*)  _designercreateview:(b4i_metroui_moderntext*) __ref :(NSObject*) _base :(B4ILabelWrapper*) _lbl :(B4IMap*) _props;
-- (NSString*)  _gettext:(b4i_metroui_moderntext*) __ref;
-- (B4XFont*)  _gettextfont:(b4i_metroui_moderntext*) __ref;
-- (NSString*)  _initialize:(b4i_metroui_moderntext*) __ref :(B4I*) _ba :(NSObject*) _callback :(NSString*) _eventname;
-- (NSString*)  _mytextbox_action:(b4i_metroui_moderntext*) __ref;
-- (NSString*)  _mytextbox_beginedit:(b4i_metroui_moderntext*) __ref;
-- (NSString*)  _mytextbox_endedit:(b4i_metroui_moderntext*) __ref;
-- (NSString*)  _mytextbox_enterpressed:(b4i_metroui_moderntext*) __ref;
-- (NSString*)  _mytextbox_focuschanged:(b4i_metroui_moderntext*) __ref :(BOOL) _hasfocus;
-- (NSString*)  _mytextbox_textchanged:(b4i_metroui_moderntext*) __ref :(NSString*) _old :(NSString*) _new;
-- (NSString*)  _settext:(b4i_metroui_moderntext*) __ref :(NSString*) _text;
-- (NSString*)  _settextfont:(b4i_metroui_moderntext*) __ref :(B4XFont*) _fnt;
-- (NSString*)  _showerror:(b4i_metroui_moderntext*) __ref :(NSString*) _errortext;
-- (double)  _uzunlukhesapla:(b4i_metroui_moderntext*) __ref :(NSString*) _nametext;
+- (NSString*)  _clearerror;
+- (NSString*)  _designercreateview:(NSObject*) _base :(B4ILabelWrapper*) _lbl :(B4IMap*) _props;
+- (NSString*)  _gettext;
+- (B4XFont*)  _gettextfont;
+- (NSString*)  _initialize:(B4I*) _ba :(NSObject*) _callback :(NSString*) _eventname;
+- (NSString*)  _mytextbox_action;
+- (NSString*)  _mytextbox_beginedit;
+- (NSString*)  _mytextbox_endedit;
+- (NSString*)  _mytextbox_enterpressed;
+- (NSString*)  _mytextbox_focuschanged:(BOOL) _hasfocus;
+- (NSString*)  _mytextbox_textchanged:(NSString*) _old :(NSString*) _new;
+- (NSString*)  _settext:(NSString*) _text;
+- (NSString*)  _settextfont:(B4XFont*) _fnt;
+- (NSString*)  _showerror:(NSString*) _errortext;
+- (double)  _uzunlukhesapla:(NSString*) _nametext;
 @end
