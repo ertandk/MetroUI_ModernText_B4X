@@ -4,6 +4,15 @@ ModulesStructureVersion=1
 Type=Class
 Version=11
 @EndOfDesignText@
+#DesignerProperty: Key: MyPanelRadius, DisplayName: Panel Radius, FieldType: int, DefaultValue: 100
+#DesignerProperty: Key: MyPanelBackgroundColor, DisplayName: Text Color, FieldType: Color, DefaultValue: 0xFFFFFFFF, Description: Panel Background color
+#DesignerProperty: Key: CircleColor, DisplayName: Circle Color, FieldType: Color, DefaultValue: 0xFF067DC1, Description: Circle Color
+
+#DesignerProperty: Key: iconCircleSize, DisplayName: icon Size , FieldType: int, DefaultValue: 20, Description: icon Circle Size
+#DesignerProperty: Key: iconCircleColor, DisplayName: icon Color, FieldType: Color, DefaultValue: 0xFFFFFFFF, Description: icon Circle Color
+
+#DesignerProperty: Key: HintText, DisplayName: Hint Text, FieldType: String, DefaultValue: Name, Description: Hint Text
+
 
 Sub Class_Globals
 	Private mEventName As String 'ignore
@@ -13,21 +22,37 @@ Sub Class_Globals
 	Public Tag As Object
 	
 	Dim img As ImageView
-	Dim Color As String
+	
+	
 	
 	Dim MyPanel As Panel
+	Dim MyTextboxB4X As B4XView
 	Dim MyTextbox As EditText
 	
-	Dim PhotoPanel As Panel
+	Dim iconCircleB4X As B4XView
+	Dim iconCircle As Label
+	Private MyHintLabel As B4XView
+	Private MyHLabel As Label 'MyHintLabel Buna Eşitledik.Object i label a çevirdik gibi.
+	
+	Private MyErrorLabelB4X As B4XView
+	Private MyErrorLabel As Label 'MyHintLabel Buna Eşitledik.Object i label a çevirdik gibi.
+	
+	Private ilkAcilis As Boolean=True
+	Private NormalHintArkaPlanUzunlugu As Double
+
+
+	Dim PanelArkaPlanOzellikleri As ColorDrawable
+	
+'	---------------------------------------------------
 	
 	
+	Dim MyPanelRadiusProperty As Int
+	Dim MyPanelBackgroundColorProperty As String
+	Dim CircleColorProperty As Int
+	Dim iconCircleSizeProperty As Int
+	Dim iconCircleColorProperty As String
+	Dim HintNameProperty As String
 	
-	Private Labelb4x As B4XView
-	Private Label As Label
-	
-	Dim PhotoPanel As Panel
-	
-	Dim canvas1 As Canvas
 	
 End Sub
 
@@ -36,12 +61,15 @@ Public Sub Initialize (Callback As Object, EventName As String)
 	mCallBack = Callback
 	img.Initialize("img")
 	MyPanel.Initialize("MyPanel")
-	PhotoPanel.Initialize("PhotoPanel")
 	MyTextbox.Initialize("MyTextbox")
-	
-	Label.Initialize("Label")
-
-	Labelb4x  = Label
+	iconCircle.Initialize("iconCircle")
+	MyHLabel.Initialize("MyHLabel")
+	MyErrorLabel.Initialize("MyErrorLabel")
+	MyTextboxB4X=MyTextbox
+	iconCircleB4X=iconCircle
+	MyHintLabel=MyHLabel
+	MyErrorLabelB4X=MyErrorLabel
+'	--------------------------------
 
 End Sub
 
@@ -50,71 +78,204 @@ Public Sub DesignerCreateView (Base As Object, lbl As Label, Props As Map)
 	mBase = Base
 	Tag = mBase.Tag
 	mBase.Tag = Me
+	
 	img.Gravity=Gravity.FILL
 	
-	Dim PanelArkaPlanOzellikleri As ColorDrawable
-	PanelArkaPlanOzellikleri.Initialize2(Colors.White,80,0,Colors.White)
+	Dim HintYukseklik As Int=DipToCurrent(MyHintLabel.TextSize/0.77)
+	
+	MyPanelRadiusProperty = Props.Get("MyPanelRadius")
+	MyPanelBackgroundColorProperty = Props.Get("MyPanelBackgroundColor")
+	CircleColorProperty = Props.Get("CircleColor")
+	iconCircleSizeProperty = Props.Get("iconCircleSize")
+	iconCircleColorProperty = Props.Get("iconCircleColor")
+	HintNameProperty = Props.Get("HintText")
+	
+	
+	
+	
+	PanelArkaPlanOzellikleri.Initialize2(MyPanelBackgroundColorProperty,MyPanelRadiusProperty,0,Colors.White)
 	MyPanel.Background=PanelArkaPlanOzellikleri
 	
 	mBase.AddView(MyPanel,0,0,mBase.Width,mBase.Height)
-	MyPanel.AddView(MyTextbox,70dip,0,mBase.Width-70dip,MyPanel.Height)
-	MyPanel.AddView(img,-0.5dip,0,MyTextbox.left  ,mBase.Height)
+	MyPanel.AddView(MyTextbox,60dip,0,mBase.Width-70dip,MyPanel.Height)
+	MyPanel.AddView(img,0,0,MyTextbox.left  ,mBase.Height)
+	MyPanel.AddView(iconCircle,img.Left-5dip,img.Top,img.Width,img.Height)
 	
 	MyTextbox.Color=Colors.Transparent
 	
 	Dim c As Canvas
 	
 	Dim b As Bitmap
-	
+	Dim bc As ByteConverter
 	Dim svg As ioxSVG
-	
+	Dim val(1) As Int
+	val(0)=CircleColorProperty
+	Dim ColorSet As String = bc.HexFromBytes(bc.IntsToBytes(val))
+	ColorSet="#" & ColorSet.SubString(2)
 	b.InitializeMutable(img.Width,img.Height)
-	
-	
 	c.Initialize2(b)
-	Color="#067dc1"
-	
 	svg.Initialize2($"<?xml version="1.0" encoding="UTF-8" ?>
 	<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 	<svg width="100%" height="100%" viewBox="0 0 128 115" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
 	<g id="#fc7424ff">
-	<path fill="${Color}" opacity="1.00" d=" M 37.22 3.35 C 45.06 -0.03 53.78 0.53 62.09 1.04 C 76.14 3.27 88.01 12.36 96.84 23.13 C 107.21 34.19 117.48 45.36 128.00 56.27 L 128.00 57.76 C 116.32 71.13 103.73 83.71 92.28 97.28 C 84.97 105.16 75.47 111.16 64.97 113.67 C 57.45 114.82 49.69 114.84 42.18 113.56 C 30.18 110.46 19.22 103.11 12.17 92.86 C 6.67 86.03 3.76 77.56 2.04 69.06 C 0.99 63.79 -0.11 58.36 0.85 52.98 C 2.18 45.24 3.63 37.35 7.29 30.31 C 13.44 18.03 24.11 7.82 37.22 3.35 Z" />
+	<path fill="${ColorSet}" opacity="1.00" d=" M 37.22 3.35 C 45.06 -0.03 53.78 0.53 62.09 1.04 C 76.14 3.27 88.01 12.36 96.84 23.13 C 107.21 34.19 117.48 45.36 128.00 56.27 L 128.00 57.76 C 116.32 71.13 103.73 83.71 92.28 97.28 C 84.97 105.16 75.47 111.16 64.97 113.67 C 57.45 114.82 49.69 114.84 42.18 113.56 C 30.18 110.46 19.22 103.11 12.17 92.86 C 6.67 86.03 3.76 77.56 2.04 69.06 C 0.99 63.79 -0.11 58.36 0.85 52.98 C 2.18 45.24 3.63 37.35 7.29 30.31 C 13.44 18.03 24.11 7.82 37.22 3.35 Z" />
 	</g>
 	</svg>
 	"$)
-	
 	svg.DocumentWidth = img.Width
 	svg.DocumentHeight = img.Height
-	
 	svg.RenderToCanvas(c)
 	img.Bitmap=b
 	
-
-	Log(img.Height)
-
-'	Dim IconFont As B4XFont
-'	#if B4A
-'	IconFont = xui.CreateFont(Typeface.LoadFromAssets("icomoon.ttf"),128)
-'	#Else	
-'	Dim fx As JFX
-'	IconFont = xui.CreateFont(fx.LoadFont(File.DirAssets,"icomoon.ttf",64),64)
-'	#End if
-'	
-'	Labelb4x.Font = IconFont
-'	
-'	Labelb4x.TextSize = 50
-'	Labelb4x.TextColor = xui.Color_Blue
-'	Labelb4x.Color=Colors.Red
-'	Labelb4x.SetTextAlignment("CENTER","CENTER")
-'
-'	Labelb4x.Text = Chr(0xe900)
-'		
-'	mBase.AddView(MyPanel,0,0,mBase.Width,mBase.Height)
-'	
-'	MyPanel.AddView(Labelb4x,0,0,150,MyPanel.Height)
-
+	Dim IconFont As B4XFont
+	IconFont = xui.CreateFont(Typeface.FONTAWESOME,iconCircleSizeProperty)
+	
+	iconCircleB4X.SetTextAlignment("CENTER","CENTER")
+	iconCircleB4X.TextColor=iconCircleColorProperty
+	iconCircleB4X.TextSize=iconCircleSizeProperty
+	
+	iconCircleB4X.Font=IconFont
+	iconCircleB4X.Text=""
+	
+	MyHintLabel.Text=HintNameProperty
+	NormalHintArkaPlanUzunlugu=UzunlukHesapla(HintNameProperty)
+	MyPanel.AddView(MyHintLabel, MyTextbox.Left + 4dip,MyPanel.Height/2 - 10dip,NormalHintArkaPlanUzunlugu,HintYukseklik)
+	
+	MyPanel.AddView(MyErrorLabel,MyTextbox.Left + 4dip,MyPanel.Height - 18dip,MyPanel.Width,20dip)
+	MyErrorLabel.Visible=False
+	
+	
+	MyErrorLabel.TextColor=xui.Color_Red
+	MyErrorLabel.TextSize=11
+	MyErrorLabel.Text="Lütfen E-Mail Adresinizi Giriniz!"
+	
+	
+	
 End Sub
+
+Private Sub UzunlukHesapla (NameText As String) As Double
+	Dim UzunPanel As B4XView = xui.CreatePanel("")
+	UzunPanel.SetLayoutAnimated(0,0,0,MyPanel.Width,MyPanel.Height)
+	Dim canvas1 As B4XCanvas
+	canvas1.Initialize(UzunPanel)
+	Dim Rect As B4XRect = canvas1.MeasureText(NameText, MyHintLabel.Font)
+	Dim Sonuc As Double=(Rect.Width*1.08)
+	#if b4i
+	Sonuc=Sonuc+3dip
+	#End If
+	Return Sonuc
+End Sub
+
+Public Sub ShowError(ErrorText As String)
+	MyErrorLabel.Visible=True
+	MyErrorLabel.Text=ErrorText
+End Sub
+
+Public Sub ClearError
+	MyErrorLabel.Visible=False
+End Sub
+
 
 Private Sub Base_Resize (Width As Double, Height As Double)
   
 End Sub
+
+Public Sub setText(Text As String)
+	If ilkAcilis=True Then
+'		ilkAcilis=False
+		If Text.Length=0 Then
+		#If b4a
+			MyHintLabel.SetLayoutAnimated(200,MyHintLabel.left,MyTextbox.Height/2,MyHintLabel.Width,MyHintLabel.Height)
+		#Else
+			MyHintLabel.SetLayoutAnimated(200,MyHintLabel.left,MyTextBox.Height/2.2,MyHintLabel.Width,MyHintLabel.Height)
+		#End if
+		Else
+			MyHintLabel.SetLayoutAnimated(200,MyHintLabel.left,MyTextbox.Top-2.5dip,MyHintLabel.Width,MyHintLabel.Height)
+		End If
+	End If
+	MyTextbox.Text=Text
+	
+'	MyHintLabel.SetLayoutAnimated(200,MyHintLabel.left,MyTextBox.Top,MyHintLabel.Width,MyHintLabel.Height)
+
+End Sub
+
+Public Sub getText As String
+	Return MyTextboxB4X.Text
+End Sub
+
+Public Sub setTextFont(Fnt As B4XFont)
+	MyTextboxB4X.Font=Fnt
+End Sub
+
+Public Sub getTextFont As B4XFont
+	Return MyTextboxB4X.Font
+End Sub
+
+Private Sub MyTextBox_BeginEdit
+	CallSub2(Me,"MyTextBox_FocusChanged",True)
+End Sub
+Private Sub MyTextBox_EndEdit
+	CallSub2(Me,"MyTextBox_FocusChanged",False)
+End Sub
+
+Private Sub MyTextBox_FocusChanged (HasFocus As Boolean)
+	If HasFocus = False Then
+		If MyTextbox.Text.Length=0 Then
+			
+'			TextboxOkeyButton.Visible=False
+			#if b4a
+			MyHintLabel.SetLayoutAnimated(200,MyHintLabel.left,MyPanel.Height/2 - 10dip,MyHintLabel.Width,MyHintLabel.Height)
+			#else
+			MyHintLabel.SetLayoutAnimated(200,MyHintLabel.left,MyPanel.Height/2 - 10dip.2,MyHintLabel.Width,MyHintLabel.Height)
+			#End If
+		Else if MyTextboxB4X.Text.Length>0 Then
+			
+
+			MyHintLabel.SetLayoutAnimated(200,MyHintLabel.left,MyTextbox.Top-2.5dip,MyHintLabel.Width,MyHintLabel.Height)
+'			TextboxOkeyButton.Visible=False
+		End If
+	Else
+		If MyTextbox.Text.Length=0 Then
+						
+			MyHintLabel.SetLayoutAnimated(200,MyHintLabel.left,MyTextbox.Top-2.5dip,MyHintLabel.Width,MyHintLabel.Height)
+'			TextboxOkeyButton.Text=""
+'			TextboxOkeyButton.Visible=True
+		Else
+'			TextboxOkeyButton.Text=""
+'			TextboxOkeyButton.Visible=True
+			
+			
+		End If
+	End If
+	If xui.SubExists(mCallBack,mEventName & "_FocusChanged",1) Then CallSub2(mCallBack,mEventName & "_FocusChanged",HasFocus)
+End Sub
+#Region Event
+
+Private Sub MyTextBox_TextChanged (Old As String, New As String)
+	
+	If New.Length>Old.Length Then
+		
+		MyHintLabel.SetLayoutAnimated(200,MyHintLabel.left,MyTextbox.Top-2.5dip,MyHintLabel.Width,MyHintLabel.Height)
+
+'	Else if New.Length=0 Then
+'	
+'		MyHintLabel.SetLayoutAnimated(200,MyHintLabel.left,MyTextBox.Height/2,MyHintLabel.Width,MyHintLabel.Height)
+
+		
+	End If
+	
+	If xui.SubExists(mCallBack,mEventName & "_TextChanged",2) Then CallSub3(mCallBack,mEventName & "_TextChanged",Old,New)
+End Sub
+
+private Sub MyTextBox_EnterPressed
+	#if b4i
+	MyTextBoxB4X.ResignFocus
+    #end if
+	If xui.SubExists(mCallBack,mEventName & "_EnterPressed",0) Then CallSub(mCallBack,mEventName & "_EnterPressed")
+End Sub
+
+Private Sub MyTextBox_Action
+	If xui.SubExists(mCallBack,mEventName & "_EnterPressed",0) Then CallSub(mCallBack,mEventName & "_EnterPressed")
+End Sub
+
+#END Region
