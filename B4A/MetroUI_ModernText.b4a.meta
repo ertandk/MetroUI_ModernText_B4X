@@ -10,6 +10,6 @@ ModuleClosedNodes0=
 ModuleClosedNodes1=
 ModuleClosedNodes2=
 ModuleClosedNodes3=1
-NavigationStack=B4XMainPage,B4XPage_Created,13,6,Main,Activity_Resume,42,0,Main,Create_Menu,56,0,MetroUI_ModernText,Base_Resize,115,0,MetroUI_ModernText,Initialize,19,6,MetroUI_ModernText,Class_Globals,13,6,Görsel Dizayncı,MainPage.bal,-100,6,B4XMainPage,Initialize,15,0,MetroUI_ModernText,DesignerCreateView,37,6
+NavigationStack=B4XMainPage,B4XPage_Created,13,6,Main,Activity_Resume,42,0,Main,Create_Menu,56,0,MetroUI_ModernText,Base_Resize,115,0,Görsel Dizayncı,MainPage.bal,-100,6,B4XMainPage,Initialize,15,0,MetroUI_ModernText,Class_Globals,12,6,MetroUI_ModernText,Initialize,34,6,MetroUI_ModernText,DesignerCreateView,71,6
 SelectedBuild=0
 VisibleModules=1,2

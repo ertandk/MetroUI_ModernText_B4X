@@ -20,6 +20,15 @@ Sub Class_Globals
 	
 	Dim PhotoPanel As Panel
 	
+	
+	
+	Private Labelb4x As B4XView
+	Private Label As Label
+	
+	Dim PhotoPanel As Panel
+	
+	Dim canvas1 As Canvas
+	
 End Sub
 
 Public Sub Initialize (Callback As Object, EventName As String)
@@ -30,18 +39,21 @@ Public Sub Initialize (Callback As Object, EventName As String)
 	PhotoPanel.Initialize("PhotoPanel")
 	MyTextbox.Initialize("MyTextbox")
 	
+	Label.Initialize("Label")
+
+	Labelb4x  = Label
 
 End Sub
 
 'Base type must be Object
 Public Sub DesignerCreateView (Base As Object, lbl As Label, Props As Map)
 	mBase = Base
-    Tag = mBase.Tag
+	Tag = mBase.Tag
 	mBase.Tag = Me
 	img.Gravity=Gravity.FILL
 	
 	Dim PanelArkaPlanOzellikleri As ColorDrawable
-	PanelArkaPlanOzellikleri.Initialize2(Colors.White,250,0,Colors.White)
+	PanelArkaPlanOzellikleri.Initialize2(Colors.White,80,0,Colors.White)
 	MyPanel.Background=PanelArkaPlanOzellikleri
 	
 	mBase.AddView(MyPanel,0,0,mBase.Width,mBase.Height)
@@ -51,14 +63,14 @@ Public Sub DesignerCreateView (Base As Object, lbl As Label, Props As Map)
 	MyTextbox.Color=Colors.Transparent
 	
 	Dim c As Canvas
-
+	
 	Dim b As Bitmap
-
+	
 	Dim svg As ioxSVG
 	
 	b.InitializeMutable(img.Width,img.Height)
 	
-
+	
 	c.Initialize2(b)
 	Color="#067dc1"
 	
@@ -79,6 +91,27 @@ Public Sub DesignerCreateView (Base As Object, lbl As Label, Props As Map)
 	
 
 	Log(img.Height)
+
+'	Dim IconFont As B4XFont
+'	#if B4A
+'	IconFont = xui.CreateFont(Typeface.LoadFromAssets("icomoon.ttf"),128)
+'	#Else	
+'	Dim fx As JFX
+'	IconFont = xui.CreateFont(fx.LoadFont(File.DirAssets,"icomoon.ttf",64),64)
+'	#End if
+'	
+'	Labelb4x.Font = IconFont
+'	
+'	Labelb4x.TextSize = 50
+'	Labelb4x.TextColor = xui.Color_Blue
+'	Labelb4x.Color=Colors.Red
+'	Labelb4x.SetTextAlignment("CENTER","CENTER")
+'
+'	Labelb4x.Text = Chr(0xe900)
+'		
+'	mBase.AddView(MyPanel,0,0,mBase.Width,mBase.Height)
+'	
+'	MyPanel.AddView(Labelb4x,0,0,150,MyPanel.Height)
 
 End Sub
 

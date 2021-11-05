@@ -24,7 +24,7 @@ Debug.ShouldStop(262144);
 if (RemoteObject.solveBoolean("n",_job)) { 
  BA.debugLineNum = 148;BA.debugLine="Log(\"HttpUtils2Service: job completed multiple t";
 Debug.ShouldStop(524288);
-httputils2service.mostCurrent.__c.runVoidMethod ("LogImpl","016449542",RemoteObject.concat(RemoteObject.createImmutable("HttpUtils2Service: job completed multiple times - "),_taskid),0);
+httputils2service.mostCurrent.__c.runVoidMethod ("LogImpl","316252934",RemoteObject.concat(RemoteObject.createImmutable("HttpUtils2Service: job completed multiple times - "),_taskid),0);
  BA.debugLineNum = 149;BA.debugLine="Return";
 Debug.ShouldStop(1048576);
 if (true) return RemoteObject.createImmutable("");
@@ -64,7 +64,7 @@ Debug.locals.put("TaskId", _taskid);
 Debug.ShouldStop(4096);
  BA.debugLineNum = 110;BA.debugLine="Log($\"ResponseError. Reason: ${Reason}, Response:";
 Debug.ShouldStop(8192);
-httputils2service.mostCurrent.__c.runVoidMethod ("LogImpl","016384001",(RemoteObject.concat(RemoteObject.createImmutable("ResponseError. Reason: "),httputils2service.mostCurrent.__c.runMethod(true,"SmartStringFormatter",(Object)(BA.ObjectToString("")),(Object)((_reason))),RemoteObject.createImmutable(", Response: "),httputils2service.mostCurrent.__c.runMethod(true,"SmartStringFormatter",(Object)(BA.ObjectToString("")),(Object)((_response.runMethod(true,"getErrorResponse")))),RemoteObject.createImmutable(""))),0);
+httputils2service.mostCurrent.__c.runVoidMethod ("LogImpl","316187393",(RemoteObject.concat(RemoteObject.createImmutable("ResponseError. Reason: "),httputils2service.mostCurrent.__c.runMethod(true,"SmartStringFormatter",(Object)(BA.ObjectToString("")),(Object)((_reason))),RemoteObject.createImmutable(", Response: "),httputils2service.mostCurrent.__c.runMethod(true,"SmartStringFormatter",(Object)(BA.ObjectToString("")),(Object)((_response.runMethod(true,"getErrorResponse")))),RemoteObject.createImmutable(""))),0);
  BA.debugLineNum = 111;BA.debugLine="Response.Release";
 Debug.ShouldStop(16384);
 _response.runVoidMethod ("Release");
@@ -76,7 +76,7 @@ Debug.ShouldStop(65536);
 if (RemoteObject.solveBoolean("n",_job)) { 
  BA.debugLineNum = 114;BA.debugLine="Log(\"HttpUtils2Service (hc_ResponseError): job c";
 Debug.ShouldStop(131072);
-httputils2service.mostCurrent.__c.runVoidMethod ("LogImpl","016384005",RemoteObject.concat(RemoteObject.createImmutable("HttpUtils2Service (hc_ResponseError): job completed multiple times - "),_taskid),0);
+httputils2service.mostCurrent.__c.runVoidMethod ("LogImpl","316187397",RemoteObject.concat(RemoteObject.createImmutable("HttpUtils2Service (hc_ResponseError): job completed multiple times - "),_taskid),0);
  BA.debugLineNum = 115;BA.debugLine="Return";
 Debug.ShouldStop(262144);
 if (true) return RemoteObject.createImmutable("");
@@ -123,7 +123,7 @@ Debug.ShouldStop(8388608);
 if (RemoteObject.solveBoolean("n",_job)) { 
  BA.debugLineNum = 89;BA.debugLine="Log(\"HttpUtils2Service (hc_ResponseSuccess): job";
 Debug.ShouldStop(16777216);
-httputils2service.mostCurrent.__c.runVoidMethod ("LogImpl","016252931",RemoteObject.concat(RemoteObject.createImmutable("HttpUtils2Service (hc_ResponseSuccess): job completed multiple times - "),_taskid),0);
+httputils2service.mostCurrent.__c.runVoidMethod ("LogImpl","316056323",RemoteObject.concat(RemoteObject.createImmutable("HttpUtils2Service (hc_ResponseSuccess): job completed multiple times - "),_taskid),0);
  BA.debugLineNum = 90;BA.debugLine="Return";
 Debug.ShouldStop(33554432);
 if (true) return RemoteObject.createImmutable("");
@@ -212,10 +212,10 @@ httputils2service.mostCurrent.__c.getField(false,"File").runVoidMethod ("Delete"
        catch (Exception e6) {
 			BA.rdebugUtils.runVoidMethod("setLastException",httputils2service.processBA, e6.toString()); BA.debugLineNum = 34;BA.debugLine="Log(LastException)";
 Debug.ShouldStop(2);
-httputils2service.mostCurrent.__c.runVoidMethod ("LogImpl","015990791",BA.ObjectToString(httputils2service.mostCurrent.__c.runMethod(false,"LastException",httputils2service.processBA)),0);
+httputils2service.mostCurrent.__c.runVoidMethod ("LogImpl","315794183",BA.ObjectToString(httputils2service.mostCurrent.__c.runMethod(false,"LastException",httputils2service.processBA)),0);
  BA.debugLineNum = 35;BA.debugLine="Log(\"Switching to File.DirInternal\")";
 Debug.ShouldStop(4);
-httputils2service.mostCurrent.__c.runVoidMethod ("LogImpl","015990792",RemoteObject.createImmutable("Switching to File.DirInternal"),0);
+httputils2service.mostCurrent.__c.runVoidMethod ("LogImpl","315794184",RemoteObject.createImmutable("Switching to File.DirInternal"),0);
  BA.debugLineNum = 36;BA.debugLine="TempFolder = File.DirInternal";
 Debug.ShouldStop(8);
 httputils2service._tempfolder = httputils2service.mostCurrent.__c.getField(false,"File").runMethod(true,"getDirInternal");
