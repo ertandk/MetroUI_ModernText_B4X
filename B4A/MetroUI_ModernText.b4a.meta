@@ -10,6 +10,6 @@ ModuleClosedNodes0=
 ModuleClosedNodes1=
 ModuleClosedNodes2=
 ModuleClosedNodes3=1
-NavigationStack=MetroUI_ModernText,Initialize,60,6,MetroUI_ModernText,DesignerCreateView,143,6,MetroUI_ModernText,ClearError,168,1,MetroUI_ModernText,UzunlukHesapla,152,0,MetroUI_ModernText,ShowError,162,3,B4XMainPage,Text_Kontrol,27,1,B4XMainPage,Class_Globals,11,0,B4XMainPage,Button1_Click,30,6,Görsel Dizayncı,MainPage.bal,-100,6,B4XMainPage,B4XPage_Created,23,0
+NavigationStack=B4XMainPage,Text_Kontrol,27,1,B4XMainPage,Button1_Click,30,6,Görsel Dizayncı,MainPage.bal,-100,6,B4XMainPage,B4XPage_Created,23,0,B4XMainPage,Class_Globals,9,0,MetroUI_ModernText,Class_Globals,15,0,MetroUI_ModernText,MyTextBox_FocusChanged,226,0,MetroUI_ModernText,MyTextBox_TextChanged,258,0,MetroUI_ModernText,setTextFont,258,0,MetroUI_ModernText,DesignerCreateView,120,6
 SelectedBuild=0
 VisibleModules=1,2

@@ -1,14 +1,22 @@
-﻿Build1=Default,b4i.example
-File1=MainPage.bil
+﻿Build1=Default,hds.modernuixxx
+File1=curveddiamond.svg
+File2=icon.svg
+File3=MainPage.bil
+File4=textbox_3_vectorized.svg
 FileGroup1=Default Group
+FileGroup2=Default Group
+FileGroup3=Default Group
+FileGroup4=Default Group
 Group=Default Group
-Library1=icore
-Library2=b4xpages
+Library1=b4xpages
+Library2=icore
+Library3=isvg
 Module1=|relative|..\B4XMainPage
-NumberOfFiles=1
-NumberOfLibraries=2
-NumberOfModules=1
-Version=6.5
+Module2=|relative|..\MetroUI_ModernText
+NumberOfFiles=4
+NumberOfLibraries=3
+NumberOfModules=2
+Version=7.8
 @EndOfDesignText@
 'Code module
 #Region  Project Attributes 
@@ -20,6 +28,9 @@ Version=6.5
 	#Target: iPhone, iPad
 	#ATSEnabled: True
 	#MinVersion: 8
+	
+	 #CertificateFile: ios_distribution.cer
+	 #ProvisionFile: provisionnew.mobileprovision
 #End Region
 
 Sub Process_Globals
