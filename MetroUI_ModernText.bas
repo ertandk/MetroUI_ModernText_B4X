@@ -165,14 +165,11 @@ Public Sub DesignerCreateView (Base As Object, lbl As Label, Props As Map)
 	
 	#else
 	
-	
 	svg.Initialize(File.DirAssets,"icon.svg")
 	
 	img.Bitmap=svg.Export(img.Width,img.Height)
 	
 	Log(File.ReadString(File.DirAssets,"icon.svg"))
-	
-	
 	
 	#End If
 	
@@ -184,9 +181,6 @@ Public Sub DesignerCreateView (Base As Object, lbl As Label, Props As Map)
 	IconFont = xui.CreateFont(Font.CreateFontAwesome(iconCircleSizeProperty),iconCircleSizeProperty)
 
 	#End If
-	
-	
-	
 	
 	iconCircleB4X.SetTextAlignment("CENTER","CENTER")
 	iconCircleB4X.TextColor=iconCircleColorProperty
@@ -202,12 +196,9 @@ Public Sub DesignerCreateView (Base As Object, lbl As Label, Props As Map)
 	MyPanel.AddView(MyErrorLabel,MyTextboxB4X.Left + 4dip,MyPanel.Height - 18dip,MyPanel.Width,20dip)
 	MyErrorLabel.Visible=False
 	
-	
 	MyErrorLabelB4X.TextColor=xui.Color_Red
 	MyErrorLabelB4X.TextSize=11
 	MyErrorLabelB4X.Text="Lütfen E-Mail Adresinizi Giriniz!"
-	
-	
 	
 End Sub
 
