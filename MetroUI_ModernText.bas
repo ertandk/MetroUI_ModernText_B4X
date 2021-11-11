@@ -135,19 +135,20 @@ Public Sub DesignerCreateView (Base As Object, lbl As Label, Props As Map)
 	MyPanel.AddView(iconCircle,img.Left-5dip,img.Top,img.Width,img.Height)
 	
 	MyTextboxB4X.Color=Colors.Transparent
-	
+	Dim bc As ByteConverter
+	Dim val(1) As Int
+	val(0)=CircleColorProperty
+	Dim ColorSet As String = bc.HexFromBytes(bc.IntsToBytes(val))
+	ColorSet="#" & ColorSet.SubString(2)
 	#if b4a
 	
 	
 	Dim c As Canvas
 	
 	Dim b As Bitmap
-	Dim bc As ByteConverter
+	
 	Dim svg As ioxSVG
-	Dim val(1) As Int
-	val(0)=CircleColorProperty
-	Dim ColorSet As String = bc.HexFromBytes(bc.IntsToBytes(val))
-	ColorSet="#" & ColorSet.SubString(2)
+	
 	b.InitializeMutable(img.Width,img.Height)
 	c.Initialize2(b)
 	svg.Initialize2($"<?xml version="1.0" encoding="UTF-8" ?>
@@ -165,7 +166,14 @@ Public Sub DesignerCreateView (Base As Object, lbl As Label, Props As Map)
 	
 	#else
 	
-	svg.Initialize(File.DirAssets,"icon.svg")
+	Dim svg As SVG = SVGFromString($"<?xml version="1.0" encoding="UTF-8" ?>
+	<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+	<svg width="128" height="115" viewBox="0 0 128 115" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
+	<g id="#fc7424ff">
+	<path fill="${ColorSet}" opacity="1.00" d=" M 37.22 3.35 C 45.06 -0.03 53.78 0.53 62.09 1.04 C 76.14 3.27 88.01 12.36 96.84 23.13 C 107.21 34.19 117.48 45.36 128.00 56.27 L 128.00 57.76 C 116.32 71.13 103.73 83.71 92.28 97.28 C 84.97 105.16 75.47 111.16 64.97 113.67 C 57.45 114.82 49.69 114.84 42.18 113.56 C 30.18 110.46 19.22 103.11 12.17 92.86 C 6.67 86.03 3.76 77.56 2.04 69.06 C 0.99 63.79 -0.11 58.36 0.85 52.98 C 2.18 45.24 3.63 37.35 7.29 30.31 C 13.44 18.03 24.11 7.82 37.22 3.35 Z" />
+	</g>
+	</svg>
+	"$)
 	
 	img.Bitmap=svg.Export(img.Width,img.Height)
 	
@@ -201,6 +209,14 @@ Public Sub DesignerCreateView (Base As Object, lbl As Label, Props As Map)
 	MyErrorLabelB4X.Text="Lütfen E-Mail Adresinizi Giriniz!"
 	
 End Sub
+ #if b4i
+Private Sub SVGFromString(s As String) As SVG
+	Dim svgimage As NativeObject
+	svgimage = svgimage.Initialize("SVGKImage").RunMethod("new", Null).RunMethod("initWithData:", Array(svgimage.ArrayToNSData(s.GetBytes("utf8"))))
+	Dim svg As SVG = svgimage
+	Return svg
+End Sub
+#End If
 
 Private Sub UzunlukHesapla (NameText As String) As Double
 	Dim UzunPanel As B4XView = xui.CreatePanel("")

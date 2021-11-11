@@ -1,6 +1,8 @@
 #import "iCore.h"
 #import "iSVG.h"
+#import "iRandomAccessFile.h"
 #import "iXUI.h"
+#import "iDebug2.h"
 @class b4i_main;
 @class b4i_b4xpages;
 @class b4i_b4xcollections;
@@ -20,16 +22,16 @@
 @public b4i_b4xpages* __b4xpages;
 @public b4i_b4xcollections* __b4xcollections;
 
-}- (NSString*)  _add:(NSObject*) _value;
-- (B4IList*)  _aslist;
-- (NSString*)  _class_globals;
+}- (NSString*)  _add:(b4i_b4xset*) __ref :(NSObject*) _value;
+- (B4IList*)  _aslist:(b4i_b4xset*) __ref;
+- (NSString*)  _class_globals:(b4i_b4xset*) __ref;
 @property (nonatomic)b4i_b4xorderedmap* _map;
 @property (nonatomic)b4i_main* _main;
 @property (nonatomic)b4i_b4xpages* _b4xpages;
 @property (nonatomic)b4i_b4xcollections* _b4xcollections;
-- (NSString*)  _clear;
-- (BOOL)  _contains:(NSObject*) _value;
-- (int)  _getsize;
-- (NSString*)  _initialize:(B4I*) _ba;
-- (NSString*)  _remove:(NSObject*) _value;
+- (NSString*)  _clear:(b4i_b4xset*) __ref;
+- (BOOL)  _contains:(b4i_b4xset*) __ref :(NSObject*) _value;
+- (int)  _getsize:(b4i_b4xset*) __ref;
+- (NSString*)  _initialize:(b4i_b4xset*) __ref :(B4I*) _ba;
+- (NSString*)  _remove:(b4i_b4xset*) __ref :(NSObject*) _value;
 @end

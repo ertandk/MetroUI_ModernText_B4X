@@ -11,10 +11,11 @@ Group=Default Group
 Library1=b4xpages
 Library2=icore
 Library3=isvg
+Library4=irandomaccessfile
 Module1=|relative|..\B4XMainPage
 Module2=|relative|..\MetroUI_ModernText
 NumberOfFiles=4
-NumberOfLibraries=3
+NumberOfLibraries=4
 NumberOfModules=2
 Version=7.8
 @EndOfDesignText@
